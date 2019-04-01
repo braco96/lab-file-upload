@@ -1,0 +1,27 @@
+<h2>Detalles del post</h2>
+<p><strong>{{post.creatorId.username}}</strong> dice: {{post.content}}</p>
+{{#if post.picPath}}
+  <img src="{{post.picPath}}" alt="{{post.picName}}" width="300" />
+{{/if}}
+
+<h3>Comentarios</h3>
+{{#each post.comments}}
+  <div>
+    <p>{{this.content}}</p>
+    {{#if this.imagePath}}
+      <img src="{{this.imagePath}}" alt="{{this.imageName}}" width="200" />
+    {{/if}}
+  </div>
+{{/each}}
+
+{{#if user}}
+  <form action="/posts/{{post._id}}/comments" method="POST" enctype="multipart/form-data">
+    <label>Comentario
+      <textarea name="content" cols="30" rows="3"></textarea>
+    </label>
+    <label>Imagen
+      <input type="file" name="image" />
+    </label>
+    <button type="submit">Añadir comentario</button>
+  </form>
+{{/if}}

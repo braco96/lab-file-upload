@@ -1,0 +1,14 @@
+<h1>Posts</h1>
+{{#each posts}}
+  <div class="post">
+    <p><strong>{{this.creatorId.username}}</strong> dice: {{this.content}}</p>
+    {{#if this.picPath}}
+      <img src="{{this.picPath}}" alt="{{this.picName}}" width="200" />
+    {{/if}}
+    <p><a href="/posts/{{this._id}}">Ver detalles</a></p>
+  </div>
+{{/each}}
+
+{{#if user}}
+  <a href="/posts/create">Crear nuevo post</a>
+{{/if}}
